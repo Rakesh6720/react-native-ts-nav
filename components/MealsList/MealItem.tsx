@@ -7,8 +7,8 @@ import {
   StyleSheet,
   Platform,
 } from "react-native";
-import Meal from "../models/meal";
-import MealDetails from "./MealDetails";
+import Meal from "../../models/meal";
+import MealDetails from "../MealDetails";
 
 interface MealItemProps {
   item: Meal;

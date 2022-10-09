@@ -39,11 +39,9 @@ export default function MealDetailsScreen({
   function changeFavoriteStatusHandler() {
     if (mealIsFavorite) {
       dispatch(removeFavorite({ id: categoryId }));
+    } else {
+      dispatch(addFavorite({ id: categoryId }));
     }
-  }
-
-  function headerButtonPressHandler() {
-    console.log("Button Pressed");
   }
 
   useLayoutEffect(() => {
@@ -52,13 +50,13 @@ export default function MealDetailsScreen({
         return (
           <IconButton
             icon="star"
-            color="#f9e076"
-            onPress={headerButtonPressHandler}
+            color={mealIsFavorite ? "#f9e076" : "#ccc"}
+            onPress={changeFavoriteStatusHandler}
           />
         );
       },
     });
-  }, [navigation, headerButtonPressHandler]);
+  }, [navigation, changeFavoriteStatusHandler]);
 
   return (
     <ScrollView style={styles.rootContainer}>

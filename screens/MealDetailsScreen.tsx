@@ -13,6 +13,7 @@ import MealDetails from "../components/MealDetails";
 import { MEALS } from "../data/dummy-data";
 import Meal from "../models/meal";
 import IconButton from "../components/IconButton";
+import { useSelector } from "react-redux";
 
 interface MealDetailsScreenProps {
   route: any;
@@ -23,11 +24,15 @@ export default function MealDetailsScreen({
   route,
   navigation,
 }: MealDetailsScreenProps) {
+  const favoriteMealIds = useSelector((state) => state.favoriteMeals.ids);
+
   const categoryId: string = route.params.id;
 
   const mealItem: Meal | undefined = MEALS.find(
     (meal) => meal.id === categoryId
   );
+
+  const mealIsFavorite = favoriteMealIds.includes(categoryId);
 
   function headerButtonPressHandler() {
     console.log("Button Pressed");

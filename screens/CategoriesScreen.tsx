@@ -1,10 +1,6 @@
 import { FlatList, Text } from "react-native";
 import CategoryGridTile from "../components/CategoryGridTile";
-import Category from "../models/category";
-
-interface CategoriesScreenProps {
-  categories: Category[];
-}
+import { CATEGORIES } from "../data/dummy-data";
 
 function renderCategoryItem(itemData: any) {
   return (
@@ -12,12 +8,10 @@ function renderCategoryItem(itemData: any) {
   );
 }
 
-export default function CategoriesScreen({
-  categories,
-}: CategoriesScreenProps) {
+export default function CategoriesScreen() {
   return (
     <FlatList
-      data={categories}
+      data={CATEGORIES}
       keyExtractor={(category) => category.id + new Date()}
       renderItem={renderCategoryItem}
       numColumns={2}

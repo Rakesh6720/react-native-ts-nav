@@ -4,11 +4,26 @@ import CategoriesScreen from "./screens/CategoriesScreen";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import MealsOverviewScreen from "./screens/MealsOverviewScreen";
-import { CATEGORIES } from "./data/dummy-data";
-import Category from "./models/category";
-import MealDetailsScreen from "./screens/MealDetailsScreen";
-const Stack = createNativeStackNavigator();
 
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import MealDetailsScreen from "./screens/MealDetailsScreen";
+import FavoritesScreen from "./screens/FavoritesScreen";
+
+const Stack = createNativeStackNavigator();
+const Drawer = createDrawerNavigator();
+
+function DrawerNavigator() {
+  return (
+    <Drawer.Navigator
+      screenOptions={{
+        headerStyle: { backgroundColor: "#ffffff" },
+      }}
+    >
+      <Drawer.Screen name="Categories" component={CategoriesScreen} />
+      <Drawer.Screen name="Favorites" component={FavoritesScreen} />
+    </Drawer.Navigator>
+  );
+}
 export default function App() {
   return (
     <>
@@ -20,24 +35,13 @@ export default function App() {
           }}
         >
           <Stack.Screen
-            name="MealsCategories"
-            component={CategoriesScreen}
-            options={{
-              title: "All Categories",
-            }}
+            name="Drawer"
+            component={DrawerNavigator}
+            options={{ headerShown: false }}
           />
           <Stack.Screen
             name="MealsOverviewScreen"
             component={MealsOverviewScreen}
-            // options={({ route, navigation }) => {
-            //   const categoryId = route.params.categoryId;
-            //   const category: Category[] = CATEGORIES.filter(
-            //     (category) => category.id === categoryId
-            //   );
-            //   return {
-            //     title: category[0].title,
-            //   };
-            // }}
             options={{
               title: "All Meals",
             }}

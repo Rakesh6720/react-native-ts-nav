@@ -38,10 +38,14 @@ export default function App() {
             //     title: category[0].title,
             //   };
             // }}
+            options={{
+              title: "All Meals",
+            }}
           />
           <Stack.Screen
             name="MealDetailsScreen"
             component={MealDetailsScreen}
+            options={{ title: "Meal Details" }}
           />
         </Stack.Navigator>
       </NavigationContainer>

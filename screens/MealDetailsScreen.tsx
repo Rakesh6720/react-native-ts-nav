@@ -12,6 +12,7 @@ import Subtitle from "../components/MealDetail/Subtitle";
 import MealDetails from "../components/MealDetails";
 import { MEALS } from "../data/dummy-data";
 import Meal from "../models/meal";
+import IconButton from "../components/IconButton";
 
 interface MealDetailsScreenProps {
   route: any;
@@ -35,7 +36,13 @@ export default function MealDetailsScreen({
   useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => {
-        return <Button title="Tap Me" onPress={headerButtonPressHandler} />;
+        return (
+          <IconButton
+            icon="star"
+            color="#f9e076"
+            onPress={headerButtonPressHandler}
+          />
+        );
       },
     });
   }, [navigation, headerButtonPressHandler]);
